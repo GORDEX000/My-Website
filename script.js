@@ -1,5 +1,5 @@
 // URL of the stream (you can replace it with your actual stream URL)
-const streamUrl = "https://gg.hls2.xyz/live/IR%20-%20GEM%20TV/chunks.m3u8?nimblesessionid=62368929";
+const streamUrl = "https://gg.hls2.xyz/live/IR%20-%20GEM%20TV/chunks.m3u8?nimblesessionid=62373538";
 const refererHeader = "https://www.aparatchi.com";
 
 // Checking if HLS.js is supported
