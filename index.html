@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Proxy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .message {
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #e0ffe0;
+            color: #006400;
+            font-size: 18px;
+            text-align: center;
+        }
+        .error {
+            background-color: #ffe0e0;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="message" id="stream-status">
+        Loading stream...
+    </div>
+
+    <script>
+        // Simulate checking the stream URL
+        // This can be replaced with actual stream check logic
+        window.onload = function() {
+            const streamStatusElement = document.getElementById('stream-status');
+
+            // Simulate a successful stream
+            let streamFound = true;  // Change to `false` to simulate a 404 error
+            
+            if (streamFound) {
+                streamStatusElement.textContent = 'Stream Found!';
+                streamStatusElement.classList.remove('error');
+            } else {
+                streamStatusElement.textContent = 'Stream Not Found! 404';
+                streamStatusElement.classList.add('error');
+            }
+        };
+    </script>
+</body>
+</html>

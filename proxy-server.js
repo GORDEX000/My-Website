@@ -1,27 +1,32 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 
-// Set headers for the stream request
+// Serve the HTML page (index.html) when the base URL is accessed
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));  // Ensure 'index.html' is in the same directory as the server
+});
+
+// Serve the stream with custom headers
 app.get('/stream', async (req, res) => {
-    const url = req.query.url;  // Get the stream URL from query parameter
+    const url = req.query.url;
     if (!url) {
         return res.status(400).send('Missing stream URL parameter');
     }
 
     try {
-        // Get the stream from the original URL with custom headers
         const response = await axios.get(url, {
             headers: {
-                'User-Agent': 'YourCustomUserAgent',  // Your custom User-Agent
-                'Referer': 'https://www.aparatchi.com',  // Add the Referer header if needed
+                'User-Agent': 'YourCustomUserAgent',
+                'Referer': 'https://www.aparatchi.com',
             },
-            responseType: 'stream',  // Stream the response
+            responseType: 'stream',
         });
 
-        // Pipe the stream from the source to the client (your TV)
+        // Pipe the stream to the response
         response.data.pipe(res);
-        
+
     } catch (error) {
         console.error('Error fetching stream:', error);
         res.status(500).send('Error fetching stream');
